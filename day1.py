@@ -1,4 +1,4 @@
-def get_sample_input():
+def get_sample_input() -> str:
     return """3   4
     4   3
     2   5
@@ -6,16 +6,17 @@ def get_sample_input():
     3   9
     3   3"""
 
-def get_real_input():
+
+def get_real_input() -> str:
     with open("day1_input.txt") as f:
         return f.read()
     
-def prep_lists(puzzle_input):
+
+def prep_lists(puzzle_input: str) -> list:
     return [line.split() for line in puzzle_input.splitlines()]
 
-def part_1():
-    # sample_input = get_sample_input()
-    real_input = get_real_input()
+
+def part_1(real_input: str) -> list:
     prelim_lists = prep_lists(real_input)
     sorted_first_list = sorted([int(val[0]) for val in prelim_lists])
     sorted_second_list = sorted([int(val[1]) for val in prelim_lists])
@@ -26,9 +27,7 @@ def part_1():
     return result
 
 
-def part_2():
-    # sample_input = get_sample_input()
-    real_input = get_real_input()
+def part_2(real_input: str) -> list:
     prelim_lists = prep_lists(real_input)
     first_list = [int(val[0]) for val in prelim_lists]
     second_list = [int(val[1]) for val in prelim_lists]
@@ -38,9 +37,12 @@ def part_2():
     return result
 
 
-def main():
-    print(part_1())
-    print(part_2())
+def main() -> None:
+    # sample_input = get_sample_input()
+    real_input = get_real_input()
+    print(part_1(real_input))
+    print(part_2(real_input))
+
 
 if __name__ == "__main__":
     main()
