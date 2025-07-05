@@ -48,10 +48,36 @@ def is_safe_part1(report):
     return False
 
 
+def is_safe_part2(report):
+    for i, _ in enumerate(report):
+        test_report = report.copy()
+        test_report.pop(i)
+        if is_safe_part1(test_report):
+            print(f"We found a safe report after removing the value at index {i}! {test_report}")
+            return True
+
+
+def part_2(puzzle_input):
+    results = []
+    reports = prep_lists(puzzle_input)
+    
+    for report in reports:
+        report = [int(x) for x in report]
+        if is_safe_part1(report):
+            print(f"We found a safe report! {report}")
+            results.append(True)
+        else:
+            results.append(is_safe_part2(report))
+        
+    return results.count(True)
+
+
+
 def main():
     # puzzle_input = get_sample_input()
     puzzle_input = get_real_input()
     print(part_1(puzzle_input))
+    print(part_2(puzzle_input))
 
 
 if __name__ == "__main__":
