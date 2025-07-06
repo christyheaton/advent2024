@@ -5,6 +5,7 @@ VALS_TO_MULTIPLY_RE = r"\d+"
 
 
 def get_sample_input():
+    # Part 1 sample commented out
     # return "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
     return "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
 
@@ -30,10 +31,8 @@ def part_2(puzzle_input):
     for string in donts:
         new_list = string.split("do")
         if len(new_list) > 1:
-            # print(new_list)
             mini_do_str = "".join(new_list[1:])
             dos.append(mini_do_str)
-    # print(dos)
 
     do_str = "".join(dos)
     return(part_1(do_str))
